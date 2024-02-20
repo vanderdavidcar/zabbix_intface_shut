@@ -10,7 +10,7 @@ with open(f'zbx_problems_export.csv') as file:
     for problem, groups in groupby(rows, key=itemgetter('Problem')):
         hosts = list(row['Host'] for row in groups)
         
-        pattern = "Down.([A-z-Z-a]+\s[0-9][^\w\s]\d+|\S+.[\d]+)"
+        pattern = "Down.([A-z-Z-a]+\s[0-9][^\w\s]\d+|\S+.[\d]+[(])"
         match = re.findall(pattern, problem)
         
         #print(f"Hosts: {hosts} and Interface: {match}")
